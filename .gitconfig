@@ -21,6 +21,6 @@
    cl = clone
    br = branch
 [mergetool "diffconflicts"]
-	cmd = diffconflicts gvim $BASE $LOCAL $REMOTE $MERGED
+	cmd = diffconflicts gvim $BASE $LOCAL $REMOTE $MERGED -f
 	trustExitCode = true
 	keepBackup = false
