@@ -1,0 +1,26 @@
+[user]
+	name = Stefan Lendl
+	email = ste.lendl@gmail.com
+[push]
+	default = matching
+[merge]
+	tool = diffconflicts
+[diff]
+	tool = gvimdiff
+[core]
+	editor = vim
+[difftool]
+	prompt = false
+[alias]
+	d = difftool
+   m = merge
+   s = status
+   cam = commit -am
+   c = commit
+   co = checkout
+   cl = clone
+   br = branch
+[mergetool "diffconflicts"]
+	cmd = diffconflicts gvim $BASE $LOCAL $REMOTE $MERGED
+	trustExitCode = true
+	keepBackup = false
