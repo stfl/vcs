@@ -12,14 +12,18 @@
 [difftool]
 	prompt = false
 [alias]
-	d = difftool
+   d = diff
+	dt = difftool
    m = merge
+   mt = mergetool
    s = status
    cam = commit -am
    c = commit
    co = checkout
    cl = clone
    br = branch
+   l = log
+   graph = log --graph --decorate --oneline --all
 [mergetool "diffconflicts"]
 	cmd = diffconflicts gvim $BASE $LOCAL $REMOTE $MERGED -f
 	trustExitCode = true
