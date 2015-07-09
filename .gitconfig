@@ -25,6 +25,7 @@
    l = log
    graph = log --graph --decorate --oneline --all
 [mergetool "diffconflicts"]
-	cmd = diffconflicts gvim $BASE $LOCAL $REMOTE $MERGED -f
+	cmd = diffconflicts gvim $BASE $LOCAL $REMOTE $MERGED
 	trustExitCode = true
 	keepBackup = false
+   ; exit with :cq to tell git that is has been resolved
