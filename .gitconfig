@@ -8,7 +8,7 @@
 [diff]
 	tool = gvimdiff
 [core]
-	editor = vim
+	editor = gvim
 [difftool]
 	prompt = false
 [alias]
@@ -24,6 +24,7 @@
    br = branch
    l = log
    graph = log --graph --decorate --oneline --all
+   ls = ls-files
 [mergetool "diffconflicts"]
 	cmd = diffconflicts gvim $BASE $LOCAL $REMOTE $MERGED
 	trustExitCode = true
