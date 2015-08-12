@@ -23,6 +23,8 @@
    cl = clone
    br = branch
    l = log
+   pu = push
+   pl = pull
    graph = log --graph --decorate --oneline --all
    ls = ls-files
 [mergetool "diffconflicts"]
