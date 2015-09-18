@@ -1,2 +1,1 @@
-#!/bin/sh
-push origin master
+../hooks-available/post-commit
