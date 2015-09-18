@@ -34,3 +34,4 @@
    ; exit with :cq to tell git that is has been resolved
 [color]
 	ui = auto
+
