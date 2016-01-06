@@ -6,9 +6,9 @@
 [merge]
 	tool = diffconflicts
 [diff]
-	tool = gvimdiff
+	tool = vimdiff
 [core]
-	editor = gvim
+	editor = vim
 [difftool]
 	prompt = false
 [alias]
@@ -27,11 +27,18 @@
    pl = pull
    graph = log --graph --decorate --oneline --all
    ls = ls-files
+
+   # the acronym stands for "subtree add"
+   sba = "!f() { git subtree add --prefix $2 $1 master --squash; }; f"
+   # the acronym stands for "subtree update"
+   sbu = "!f() { git subtree pull --prefix $2 $1 master --squash; }; f"
+
 [mergetool "diffconflicts"]
-	cmd = diffconflicts gvim $BASE $LOCAL $REMOTE $MERGED
+   # better work with vim-fugitive!
+	cmd = diffconflicts vim $BASE $LOCAL $REMOTE $MERGED
 	trustExitCode = true
 	keepBackup = false
-   ; exit with :cq to tell git that is has been resolved
+   # exit with :cq to tell git that is has been resolved
 [color]
 	ui = auto
 
