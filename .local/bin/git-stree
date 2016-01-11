@@ -72,6 +72,13 @@ function add_subtree
   local url=$(require_arg 4 'Missing URL')
   local branch=$(optional_arg 5 'master')
 
+  if [[ "${args[6]}" == "--nofetch" ]]; then
+     echo "don't fetch source - only set config"
+     local nofetch=1
+  fi
+
+  # if [ "${args[$3]}" -eq "--nofetch" ] || 
+
   local root_key=$(get_root_key "$name")
   local remote_name=$(get_remote_name "$name")
   if [ $(git config --local --get "remote.$remote_name.url") ]; then
@@ -83,21 +90,32 @@ function add_subtree
   ensure_attached_head
   ensure_no_stage
 
-  { git remote add -t "$branch" "$remote_name" "$url" &&
-    git fetch --quiet "$remote_name" &&
-    git config --local "stree.$root_key.prefix" "$prefix" &&
-    git config --local "stree.$root_key.branch" "$branch" &&
-    git read-tree --prefix="$prefix" -u "$remote_name/$branch" &&
-    git commit -m "[STree] Added stree '$root_key' in $prefix" &&
-    git config --local "stree.$root_key.latest-sync" "$(git rev-parse --short HEAD)" &&
-    echo '' &&
-    yay "STree '$root_key' configured, 1st injection committed.";
-  } || {
+  git remote add -t "$branch" "$remote_name" "$url" &&
+  git config --local "stree.$root_key.prefix" "$prefix" &&
+  git config --local "stree.$root_key.branch" "$branch" &&
+  if [ "$?" -ne "0" ]; then
     echo '' &&
     git remote rm "$remote_name" &&
     git config --local --remove-section "stree.$root_key" &&
     error false "STree '$root_key' could not be configured.";
-  }
+    return 1
+  fi
+  [[ "$nofetch" -eq "1" ]] && return 1
+
+  git fetch --quiet "$remote_name" &&
+  git read-tree --prefix="$prefix" -u "$remote_name/$branch" &&
+  git commit -m "[STree] Added stree '$root_key' in $prefix" &&
+  git config --local "stree.$root_key.latest-sync" "$(git rev-parse --short HEAD)" &&
+  echo '' &&
+  yay "STree '$root_key' configured, 1st injection committed.";
+
+  if [ "$?" -ne "0" ]; then
+    echo '' &&
+    git remote rm "$remote_name" &&
+    git config --local --remove-section "stree.$root_key" &&
+    error false "STree '$root_key' could not be configured.";
+    return 1
+  fi
 }
 
 # Helper: determines whether a branch exists
@@ -517,7 +535,7 @@ function split_subtree
   local name=$(require_name)
   require_arg 2 'Missing -P parameter' '-P' > /dev/null
   local prefix=$(require_arg 3 'Missing prefix')
-  prefix=$(normalize_prefix "$prefix")
+  # prefix=$(normalize_prefix "$prefix")
   local url=$(require_arg 4 'Missing URL')
   local branch=$(optional_arg 5 'master')
 
