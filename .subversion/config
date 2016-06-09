@@ -50,8 +50,7 @@
 ###   This will override the environment variables that Subversion
 ###   examines by default to find this information ($EDITOR, 
 ###   et al).
-editor-cmd = gvim
-diff-cmd = diffwrap.sh
+# editor-cmd = editor (vi, emacs, notepad, etc.)
 ### Set diff-cmd to the absolute path of your 'diff' program.
 ###   This will override the compile-time default, which is to use
 ###   Subversion's internal diff implementation.
@@ -66,9 +65,7 @@ diff-cmd = diffwrap.sh
 ### Set merge-tool-cmd to the command used to invoke your external
 ### merging tool of choice. Subversion will pass 4 arguments to
 ### the specified command: base theirs mine merged
-
-#merge-tool-cmd = /home/slendl/mybin/svn-merge-meld.py
-merge-tool-cmd = svn-merge-vim.sh
+# merge-tool-cmd = merge_command
 
 ### Section for configuring tunnel agents.
 [tunnels]
@@ -85,7 +82,7 @@ merge-tool-cmd = svn-merge-vim.sh
 ### passed to the tunnel agent as <user>@<hostname>.)  If the
 ### built-in ssh scheme were not predefined, it could be defined
 ### as:
-# ssh = $SVN_SSH ssh -q
+# ssh = $SVN_SSH ssh -q -o ControlMaster=no
 ### If you wanted to define a new 'rsh' scheme, to be used with
 ### 'svn+rsh:' URLs, you could do so as follows:
 # rsh = rsh
@@ -102,8 +99,7 @@ merge-tool-cmd = svn-merge-vim.sh
 ### which Subversion will ignore in its 'status' output, and
 ### while importing or adding files and directories.
 ### '*' matches leading dots, e.g. '*.rej' matches '.foo.rej'.
-# global-ignores = *.o *.lo *.la *.al .libs *.so *.so.[0-9]* *.a *.pyc *.pyo
-#   *.rej *~ #*# .#* .*.swp .DS_Store
+global-ignores = *.o *.lo *.la *.al .libs *.so *.so.[0-9]* *.a *.pyc *.pyo *.rej *~ *# .#* .*.swp .DS_Store
 ### Set log-encoding to the default encoding for log messages
 # log-encoding = latin1
 ### Set use-commit-times to make checkout/update/switch/revert
