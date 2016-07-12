@@ -2,7 +2,7 @@
 	name = Stefan Lendl
 	email = ste.lendl@gmail.com
 [github]
-  user = stfl
+   user = stfl
 [push]
 	default = matching
 [merge]
@@ -29,11 +29,6 @@
    pl = pull
    graph = log --graph --decorate --oneline --all
    ls = ls-files
-
-   # the acronym stands for "subtree add"
-   sba = "!f() { git subtree add --prefix $2 $1 master --squash; }; f"
-   # the acronym stands for "subtree update"
-   sbu = "!f() { git subtree pull --prefix $2 $1 master --squash; }; f"
 
 [mergetool "diffconflicts"]
    # better work with vim-fugitive!
