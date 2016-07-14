@@ -28,6 +28,7 @@
    pu = push
    pl = pull
    graph = log --graph --decorate --oneline --all
+   lg = log --graph --all --pretty=format:'%Cred%h%Creset %Cgreen%ad%Creset -%C(bold cyan)%d%Creset %s %C(magenta)<%an>%Creset' --date=short
    ls = ls-files
 
 [mergetool "diffconflicts"]
