@@ -24,7 +24,7 @@
    co = checkout
    cl = clone
    br = branch
-   l = log
+   l = log --topo-order --pretty=format:'%C(bold)Commit:%C(reset) %C(green)%H%C(red)%d%n%C(bold)Author:%C(reset) %C(cyan)%an <%ae>%n%C(bold)Date:%C(reset)   %C(blue)%ai (%ar)%C(reset)%n%+B'
    pu = push
    pl = pull
    graph = log --graph --decorate --oneline --all
