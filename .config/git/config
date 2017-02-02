@@ -14,22 +14,26 @@
 [difftool]
 	prompt = false
 [alias]
-   d = diff
-	dt = difftool
-   m = merge
-   mt = mergetool
-   s = status
-   cam = commit -am
-   c = commit
-   co = checkout
-   cl = clone
-   br = branch
-   l = log --topo-order --pretty=format:'%C(bold)Commit:%C(reset) %C(green)%H%C(red)%d%n%C(bold)Author:%C(reset) %C(cyan)%an <%ae>%n%C(bold)Date:%C(reset)   %C(blue)%ai (%ar)%C(reset)%n%+B'
-   pu = push
-   pl = pull
+   a     = add
+   br    = branch
+   c     = commit
+   cam   = commit -am
+   cl    = clone
+   co    = checkout
+   d     = diff
+   dt    = difftool
+   f     = fetch
+   gr    = graph
    graph = log --graph --decorate --oneline --all
-   lg = log --graph --all --pretty=format:'%Cred%h%Creset %Cgreen%ad%Creset -%C(bold cyan)%d%Creset %s %C(magenta)<%an>%Creset' --date=short
-   ls = ls-files
+   h     = help
+   l     = log --topo-order --pretty  = format:'%C(bold)Commit:%C(reset) %C(green)%H%C(red)%d%n%C(bold)Author:%C(reset) %C(cyan)%an <%ae>%n%C(bold)Date:%C(reset)   %C(blue)%ai (%ar)%C(reset)%n%+B'
+   lg    = log --graph --all --pretty = format:'%Cred%h%Creset %Cgreen%ad%Creset -%C(bold cyan)%d%Creset %s %C(magenta)<%an>%Creset' --date = short
+   ls    = ls-files
+   m     = merge
+   mt    = mergetool
+   pl    = pull
+   pu    = push
+   s     = status
 
 [mergetool "diffconflicts"]
    # better work with vim-fugitive!
