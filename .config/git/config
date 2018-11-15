@@ -28,10 +28,10 @@
    dt    = difftool
    f     = fetch
    graph = log --graph --decorate --oneline --all
-   gr    = log --graph --decorate --oneline --all
+   gr    = log --graph --all --pretty=format:'%Cred%h%Creset %Cgreen%ad%Creset -%C(bold cyan)%d%Creset %s %C(magenta)<%an>%Creset' --date=short
    h     = help
    l     = log --topo-order --pretty=format:'%C(bold)Commit:%C(reset) %C(green)%H%C(red)%d%n%C(bold)Author:%C(reset) %C(cyan)%an <%ae>%n%C(bold)Date:%C(reset)   %C(blue)%ai (%ar)%C(reset)%n%+B'
-   lg    = log --graph --all --pretty=format:'%Cred%h%Creset %Cgreen%ad%Creset -%C(bold cyan)%d%Creset %s %C(magenta)<%an>%Creset' --date=short
+   lg    = log --graph --pretty=format:'%Cred%h%Creset %Cgreen%ad%Creset -%C(bold cyan)%d%Creset %s %C(magenta)<%an>%Creset' --date=short
    ls    = ls-files
    m     = merge
    pl    = pull
@@ -48,3 +48,29 @@
    # exit with :cq to tell git that is has been resolved
 [color]
 	ui = auto
+
+[sendmail]
+  # https://coderwall.com/p/dp-gka/setting-up-git-send-email-with-gmail
+  from = Stefan Lendl <ste.lendl@gmail.com>
+
+  chainReplyTo = false
+
+  smtpEncryption = tls
+  smtpServer = smtp.gmail.com
+  smtpUser = ste.lendl@gmail.com
+  smtpServerPort = 587
+
+[imap]
+# git format-patch --cover-letter -M --stdout origin/master | git imap-send
+  from = Stefan Lendl <ste.lendl@gmail.com>
+  #folder = "[Gmail]/Drafts"
+  folder = "%5BGmail%5D/Drafts"
+	host = imaps://imap.gmail.com
+	user = ste.lendl@gmail.com
+	port = 993
+	sslVerify = false
+  # pass = addedThroughInclude
+
+[include]
+  # add the password there
+  path = ~/.config/git/email
