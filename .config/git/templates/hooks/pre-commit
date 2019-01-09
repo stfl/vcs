@@ -1,0 +1,21 @@
+#!/bin/sh
+#
+# A git hook to make sure user.email exists before committing
+
+
+# https://orrsella.com/2013/08/10/git-using-different-user-emails-for-different-repositories/
+
+REMOTE=$(git remote get-url origin)
+EMAIL=$(git config user.email)
+
+if [[ -z "$EMAIL" ]] && [[ $REMOTE == git@bitbucket.org* ]]; then
+    # user.email is empty
+    echo -e "ERROR: [pre-commit hook] Aborting commit because user.email is missing.\nConfigure user.email for this repository by running: '$ git config user.email name@example.com'.\nMake sure not to configure globally and use the correct email."
+    exit 1
+elif [[ -z "$REMOTE" ]]; then
+    echo "remote 'origin' seams to be empty, maybe a different origin? do you want to use ${EMAIL}?"
+    exit 0
+else
+    # user.email is not empty
+    exit 0
+fi

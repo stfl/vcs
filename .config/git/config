@@ -1,6 +1,8 @@
 [user]
 	name = Stefan Lendl
 	email = ste.lendl@gmail.com
+[init]
+    templatedir = ~/.config/git/templates
 [github]
    user = stfl
 [push]
@@ -63,14 +65,14 @@
 [imap]
 # git format-patch --cover-letter -M --stdout origin/master | git imap-send
   from = Stefan Lendl <ste.lendl@gmail.com>
-  #folder = "[Gmail]/Drafts"
-  folder = "%5BGmail%5D/Drafts"
+  folder = "[Gmail]/Drafts"
 	host = imaps://imap.gmail.com
 	user = ste.lendl@gmail.com
 	port = 993
 	sslVerify = false
   # pass = addedThroughInclude
-
-[include]
-  # add the password there
-  path = ~/.config/git/email
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
