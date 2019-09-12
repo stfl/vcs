@@ -6,7 +6,7 @@
 [github]
    user = stfl
 [push]
-	default = matching
+	default = simple
 [merge]
 	tool = meld
 [diff]
