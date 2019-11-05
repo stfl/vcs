@@ -8,16 +8,18 @@
 [push]
 	default = simple
 [merge]
-	tool = meld
+	tool = vimdiff
+  trustExitCode = true
 [diff]
-	tool = nvim -d
+	tool = vimdiff
 [core]
   editor = nvim
 # on linux set input
 # on windows auto
   crlf = input
 [difftool]
-	prompt = false
+	prompt = true
+	prompt = true
 [alias]
    a     = add
    br    = branch
