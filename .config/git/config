@@ -3,22 +3,22 @@
 	email = ste.lendl@gmail.com
 [init]
     templatedir = ~/.config/git/templates
+	defaultBranch = main
 [github]
    user = stfl
 [push]
 	default = simple
-[merge]
-	tool = vimdiff
-  trustExitCode = true
-[diff]
-	tool = vimdiff
+# [merge]
+	# tool = vimdiff
+	# trustExitCode = true
+# [diff]
+# 	tool = vimdiff
 [core]
-  editor = nvim
+  editor = vim
 # on linux set input
 # on windows auto
   crlf = input
 [difftool]
-	prompt = true
 	prompt = true
 [alias]
    a     = add
